@@ -11,7 +11,7 @@ DURATION:4 WEEKS
 
 MENTOR:NEELA SANTOSH
 
-#OUTPUT
+DESCRIPTION
 
 API Integration and Data Visualization
 
