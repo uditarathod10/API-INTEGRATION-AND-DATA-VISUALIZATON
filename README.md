@@ -37,4 +37,7 @@ Technical Requirements:
 - [Visualization library/tool] for data visualization
 - Developed entirely in IDLE
 
+  OUTPUT
+  <img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/d0619d2f-19c5-45b4-953b-b440c0e2369a" />
+
   
