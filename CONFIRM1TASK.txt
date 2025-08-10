@@ -1,0 +1,38 @@
+# import pandas,matplotlib,seaborn,requests
+
+""" pandas used for data manipulation and analysis
+    seaborn is high level API for creating attrative plots
+    matlotlib is python wrapper for CoinGecko API"""
+
+import requests
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# now fetch the data from CoinGecko API
+url = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart"
+params = {
+    "vs_currency": "usd", # we want prices in USD
+    "days": "30",  # we want data for last 30 days
+    "interval": "daily"
+}
+
+response = requests.get(url, params=params)
+data = response.json()
+
+#  Convert to pandas DataFrame
+prices = data['prices']  # list of [timestamp, price]
+df = pd.DataFrame(prices, columns=["timestamp", "prices"])
+df["date"] = pd.to_datetime(df["timestamp"], unit='ms')
+
+ # now plot with the help of seaborn 
+sns.set(style="darkgrid")
+plt.figure(figsize=(12, 6))  # set size of plot
+sns.lineplot(data=df, x="date", y="prices")
+plt.title("BTC price history- monthly overview ")
+plt.xlabel("Date")
+plt.ylabel("BTC value (USD)")
+plt.xticks(rotation=45)  # rotates x-axis labels for better visibility
+plt.tight_layout()
+plt.show()
+ 
